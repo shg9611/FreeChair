@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/themeColor"
+    android:backgroundTintMode="multiply"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -21,6 +22,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:tint="#676767"
+
             app:srcCompat="@drawable/freechairlogo" />
     </LinearLayout>
 
@@ -37,13 +39,15 @@
             android:layout_weight="3" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName3"
+            android:id="@+id/editSearch"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Name" />
+            android:text="Name"
+
+                       />
 
         <Space
             android:layout_width="match_parent"
@@ -75,13 +79,30 @@
             android:layout_height="match_parent"
             android:layout_weight="10" />
 
-        <ImageView
-            android:id="@+id/imageView7"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:tint="#A13D8509"
-            app:srcCompat="@drawable/seoulmap" />
+            android:layout_weight="2"
+            android:background="@drawable/seoulmap"
+
+            android:backgroundTint="#A13D8509"
+            android:backgroundTintMode="src_atop">
+
+            <Button
+                android:id="@+id/findingMapButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#737573"
+                android:text="@string/finding_map"
+                android:textSize="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.62"
+
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <Space
             android:layout_width="match_parent"
