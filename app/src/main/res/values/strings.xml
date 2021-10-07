@@ -3,4 +3,8 @@
     <string name="finding_map">지도로 찾기</string>
     <string name="finding_map_activity">지도로 검색</string>
     <string name="search_activity">검색</string>
+    <string name="ramp">경사로</string>
+    <string name="wc">장애인\n화장실</string>
+    <string name="stair">출입구\n높이차이X</string>
+    <string name="elevator">엘리베이터</string>
 </resources>

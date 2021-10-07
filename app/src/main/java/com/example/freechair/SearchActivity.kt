@@ -21,9 +21,10 @@ class SearchActivity : AppCompatActivity() {
         binding.search.setIconified(false)
         binding.search.requestFocus()
 
-        //서치뷰 검색시
+        //서치뷰 검색시. SearchView의 onQueryTextListener를 override 한 object를 생성한 후, 그 object를 search의 파라미터로 넘겨주는 코드.
         binding.search.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
-            //서치뷰 엔터시
+
+            //서치뷰 엔터시 일어나는 일 override
             override fun onQueryTextSubmit(query: String?): Boolean {
                 searchReturnIntent.putExtra("searchValue",query)
                 setResult(RESULT_OK,searchReturnIntent)

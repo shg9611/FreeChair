@@ -32,7 +32,7 @@ class SearchResultActivity : AppCompatActivity() {
         }
 
     }
-
+    //호출했던 activity 종료시 result 받는 메서드
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         
