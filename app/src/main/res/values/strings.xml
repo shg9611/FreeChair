@@ -7,4 +7,5 @@
     <string name="wc">장애인\n화장실</string>
     <string name="stair">출입구\n높이차이X</string>
     <string name="elevator">엘리베이터</string>
+    <string name="gu">담당구</string>
 </resources>
