@@ -11,18 +11,29 @@ import com.example.freechair.databinding.ActivitySearchResultBinding
 class SearchResultActivity : AppCompatActivity() {
 
     val binding by lazy{ActivitySearchResultBinding.inflate(layoutInflater)}
-    val shopInfo: MutableList<shopInfo> = mutableListOf()
+    val helper=SqliteHelper(this,"restaurantDb",1)
+    var restaurantInfo: MutableList<Restaurant> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        helper.dbInit()
 
         Log.d("result","초기 검색값 : ${intent.getStringExtra("search")}")
 
+        //초기화면에서 넘어온 검색값 intent
+        val searchValue=intent.getStringExtra("search")
+
+        //searchActivity로 넘겨주는 intent
         val searchIntent= Intent(this,SearchActivity::class.java)
+
+        //검색 시작
+        restaurantInfo=helper.search(searchValue,searchValue)
+
+        //recycler view 위한 adapter 생성
         val adapter=CustomAdapter()
-        adapter.listShop=shopInfo
+        adapter.listShop=restaurantInfo
         binding.recycleView.adapter=adapter
         binding.recycleView.layoutManager=LinearLayoutManager(this)
 
@@ -39,55 +50,6 @@ class SearchResultActivity : AppCompatActivity() {
         }
 
 
-        //가상 가게 정보 데이터 생성부
-        var shopOne=shopInfo(
-            "롯데리아1",
-            "은평구",
-            "02-308-6681",
-            "서울시 은평구 응암로 229",
-            'N',
-            'N',
-            'Y',
-            'N'
-        )
-
-        var shopTwo=shopInfo(
-            "롯데리아2",
-            "구로구",
-            "02-308-6681",
-            "서울시 은평구 응암로 229",
-            'y',
-            'N',
-            'y',
-            'y'
-        )
-
-        var shopThree=shopInfo(
-            "롯데리아3",
-            "광진구",
-            "02-308-6681",
-            "서울시 은평구 응암로 229",
-            'N',
-            'N',
-            'N',
-            'N'
-        )
-
-        var shopFour=shopInfo(
-            "고깃집",
-            "송파구",
-            "02-208-6681",
-            "서울시 은평구 응암로 229",
-            'N',
-            'N',
-            'N',
-            'N'
-        )
-
-        shopInfo.add(shopOne)
-        shopInfo.add(shopTwo)
-        shopInfo.add(shopThree)
-        shopInfo.add(shopFour)
 
 
     }
