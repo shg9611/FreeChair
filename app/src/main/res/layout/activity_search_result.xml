@@ -76,7 +76,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="@string/stair"
-                android:checked="true"/>
+                />
 
             <ImageView
                 android:id="@+id/imageView2"
@@ -92,7 +92,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="@string/ramp"
-                android:checked="true"/>
+                />
 
         </LinearLayout>
 
@@ -115,7 +115,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="@string/elevator"
-                android:checked="true"/>
+                />
 
             <ImageView
                 android:id="@+id/imageView4"
@@ -130,7 +130,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="@string/wc"
-                android:checked="true"/>
+                />
 
 
         </LinearLayout>

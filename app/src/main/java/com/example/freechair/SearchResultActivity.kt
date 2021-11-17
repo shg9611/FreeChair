@@ -19,10 +19,10 @@ class SearchResultActivity : AppCompatActivity() {
     var searchValue:String?=""
 
     //4가지 체크 버튼. 기본 상태 : "Y". "N"은 체크 해제 상태.
-    var rampCheck="Y"
-    var elevatorCheck="Y"
-    var stairCheck="Y"
-    var restroomCheck="Y"
+    var rampCheck="N"
+    var elevatorCheck="N"
+    var stairCheck="N"
+    var restroomCheck="N"
 
     //체크박스 리스너 코딩
     val checkListener by lazy {
@@ -71,7 +71,7 @@ class SearchResultActivity : AppCompatActivity() {
                 }.toMutableList()
 
             }
-            if (elevatorCheck.equals("Y")){
+            if (restroomCheck.equals("Y")){
                 filteredInfo=filteredInfo.filter{
                     it.restroom.equals(restroomCheck)
                 }.toMutableList()

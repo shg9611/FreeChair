@@ -295,17 +295,21 @@ class SqliteHelper (context: Context, name:String, version: Int):SQLiteOpenHelpe
     fun search(nameChk:String?,guChk:String?,rampChk:String="N", heightDifferChk: String="N",
                elevatorChk: String="N", restroomChk: String="N"):MutableList<Restaurant>{
 
-        val resultList=mutableListOf<Restaurant>()
+        var resultList=mutableListOf<Restaurant>()
 
         val listone:MutableList<Restaurant>
         val listtwo:MutableList<Restaurant>
 
         if (nameChk!=null&&guChk!=null) {
-
+            
+            //이름 기반 검색과 구 기반 검색 합치기
             listone = selectName(nameChk, rampChk, heightDifferChk, elevatorChk, restroomChk)
             listtwo = selectGu(guChk, rampChk, heightDifferChk, elevatorChk, restroomChk)
             resultList.addAll(listone)
             resultList.addAll(listtwo)
+
+            //중복제거
+            resultList=resultList.distinct().toMutableList()
         }
 
 

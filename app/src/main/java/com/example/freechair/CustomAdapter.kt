@@ -1,7 +1,9 @@
 package com.example.freechair
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.freechair.databinding.ItemRecyclerBinding
 
@@ -32,13 +34,31 @@ class Holder(val binding:ItemRecyclerBinding): RecyclerView.ViewHolder(binding.r
         binding.shopPhonenum.text="${restaurant.phoneNo}"
         binding.address.text="${restaurant.address}"
         binding.guName.text="${restaurant.gu}"
-        /* 가게 아이콘 표시부 구현 대기중
-        if (shop.elevator=='Y'){
-            binding.elevator.setBackgroundColor()
+        // 가게 아이콘 표시부
+        if (restaurant.elevator.equals("Y")){
+            binding.elevator.setColorFilter(Color.parseColor("#006400"))
         }
         else{
-        
+            binding.elevator.setColorFilter(Color.parseColor("#B22222"))
         }
-           */
+        if (restaurant.heightDiffer.equals("Y")){
+            binding.stair.setColorFilter(Color.parseColor("#006400"))
+        }
+        else{
+            binding.stair.setColorFilter(Color.parseColor("#B22222"))
+        }
+        if (restaurant.ramp.equals("Y")){
+            binding.ramp.setColorFilter(Color.parseColor("#006400"))
+        }
+        else{
+            binding.ramp.setColorFilter(Color.parseColor("#B22222"))
+        }
+        if (restaurant.restroom.equals("Y")){
+            binding.restRoom.setColorFilter(Color.parseColor("#006400"))
+        }
+        else{
+            binding.restRoom.setColorFilter(Color.parseColor("#B22222"))
+        }
+
     }
 }
