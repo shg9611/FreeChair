@@ -13,6 +13,7 @@
         android:layout_height="match_parent"
         android:layout_weight="6"
         android:background="@color/contentColor"
+        android:alpha="0.9"
         android:orientation="horizontal">
 
         <ImageButton
@@ -53,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@color/wood"
-            android:alpha="0.8"
+            android:alpha="0.6"
             />
 
         <LinearLayout
@@ -70,25 +71,28 @@
                 app:srcCompat="@drawable/stairs" />
 
             <CheckBox
-                android:id="@+id/checkBox"
+                android:id="@+id/stairCheck"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/stair" />
+                android:text="@string/stair"
+                android:checked="true"/>
 
             <ImageView
                 android:id="@+id/imageView2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/ramp" />
+                app:srcCompat="@drawable/ramp"
+                />
 
             <CheckBox
-                android:id="@+id/checkBox2"
+                android:id="@+id/rampCheck"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/ramp" />
+                android:text="@string/ramp"
+                android:checked="true"/>
 
         </LinearLayout>
 
@@ -106,11 +110,12 @@
                 app:srcCompat="@drawable/elevator" />
 
             <CheckBox
-                android:id="@+id/checkBox3"
+                android:id="@+id/elevatorCheck"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/elevator" />
+                android:text="@string/elevator"
+                android:checked="true"/>
 
             <ImageView
                 android:id="@+id/imageView4"
@@ -120,11 +125,12 @@
                 app:srcCompat="@drawable/wc" />
 
             <CheckBox
-                android:id="@+id/checkBox4"
+                android:id="@+id/restroomCheck"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/wc" />
+                android:text="@string/wc"
+                android:checked="true"/>
 
 
         </LinearLayout>
@@ -135,16 +141,34 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@color/wood"
-            android:alpha="0.8"/>
+            android:alpha="0.6"/>
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycleView"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="2">
+        android:layout_weight="2"
+        android:orientation="horizontal">
 
-    </androidx.recyclerview.widget.RecyclerView>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="18" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycleView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="18" />
+
+    </LinearLayout>
 
 
 </LinearLayout>

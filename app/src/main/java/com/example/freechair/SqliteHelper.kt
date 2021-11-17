@@ -195,7 +195,7 @@ class SqliteHelper (context: Context, name:String, version: Int):SQLiteOpenHelpe
     //주의사항 : ramp 등 4개의 필터링 옵션은 'Y','N' 의 대문자로만 표기해야 한다. 'y'와 'n'은 에러!
     //이름 기반 검색
     @SuppressLint("Range")
-    fun selectName(nameChk :String, rampChk:String="N", heightDifferChk: String="N", elevatorChk: String="N", restroomChk: String="N"):MutableList<Restaurant>{
+    fun selectName(nameChk :String?, rampChk:String="N", heightDifferChk: String="N", elevatorChk: String="N", restroomChk: String="N"):MutableList<Restaurant>{
         val list = mutableListOf<Restaurant>()
 
         var select="select * " +
@@ -244,7 +244,7 @@ class SqliteHelper (context: Context, name:String, version: Int):SQLiteOpenHelpe
 
     //구 기반 검색
     @SuppressLint("Range")
-    fun selectGu(guChk :String, rampChk:String="N", heightDifferChk: String="N", elevatorChk: String="N", restroomChk: String="N"):MutableList<Restaurant>{
+    fun selectGu(guChk :String?, rampChk:String="N", heightDifferChk: String="N", elevatorChk: String="N", restroomChk: String="N"):MutableList<Restaurant>{
         val list = mutableListOf<Restaurant>()
 
         var select="select * " +
@@ -313,5 +313,5 @@ class SqliteHelper (context: Context, name:String, version: Int):SQLiteOpenHelpe
     }
 }
 
-data class Restaurant(var no: Long?,var name:String, var gu:String, var address:
-String,var phoneNo:String, var ramp:String, var heightDiffer:String, var elevator: String, var restroom: String)
+data class Restaurant(var no: Long?,var name:String?, var gu:String?, var address:
+String?,var phoneNo:String?, var ramp:String?, var heightDiffer:String?, var elevator: String?, var restroom: String?)

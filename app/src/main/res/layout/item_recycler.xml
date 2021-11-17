@@ -17,7 +17,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="TextView" />
+            android:text="TextView"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -29,13 +31,16 @@
                 android:id="@+id/gu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+
                 android:text="@string/gu" />
 
             <TextView
                 android:id="@+id/guName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:textSize="16sp"
+                android:text="TextView"
+                android:textStyle="bold"/>
         </LinearLayout>
     </LinearLayout>
 
@@ -121,4 +126,12 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <View
+        android:id="@+id/view4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.5"
+        android:background="@color/wood"
+        android:alpha="0.4"/>
 </LinearLayout>
