@@ -8,4 +8,5 @@
     <string name="stair">출입구\n높이차이X</string>
     <string name="elevator">엘리베이터</string>
     <string name="gu">담당구</string>
+    <string name="title_activity_maps">MapsActivity</string>
 </resources>

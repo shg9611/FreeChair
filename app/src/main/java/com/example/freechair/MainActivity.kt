@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
-        val intentMap= Intent(this,MapActivity::class.java)
+        val intentMap= Intent(this,MapsActivity::class.java)
         val intentSearch=Intent(this,SearchResultActivity::class.java)
 
         //지도 기반 검색
