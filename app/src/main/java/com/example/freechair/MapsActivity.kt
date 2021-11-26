@@ -2,6 +2,7 @@ package com.example.freechair
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -17,7 +18,7 @@ import com.example.freechair.databinding.ActivityMapsBinding
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.model.*
 
-class MapsActivity : BaseActivity(), OnMapReadyCallback {
+class MapsActivity : BaseActivity(), OnMapReadyCallback, GoogleMap.OnInfoWindowClickListener {
 
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
@@ -83,6 +84,7 @@ class MapsActivity : BaseActivity(), OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
+        mMap.setOnInfoWindowClickListener (this)
 
         binding.plusButton.setOnClickListener{
             mMap.animateCamera(CameraUpdateFactory.zoomIn())
@@ -135,7 +137,10 @@ class MapsActivity : BaseActivity(), OnMapReadyCallback {
                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
 
             //생성한 마커 객체 맵에 추가
-            mMap.addMarker(markerOptions)
+            marker=mMap.addMarker(markerOptions)
+
+
+
 
         }
 
@@ -149,6 +154,17 @@ class MapsActivity : BaseActivity(), OnMapReadyCallback {
 
 
     }
+
+    override fun onInfoWindowClick(marker:Marker){
+        val name=marker.title
+        val intentShopInfo=Intent(this,SearchResultActivity::class.java)
+
+        intentShopInfo.putExtra("search","${name}")
+
+
+        startActivity(intentShopInfo)
+    }
+
     @SuppressLint("MissingPermission")
     fun updateLocation(){
         val locationRequest= LocationRequest.create()

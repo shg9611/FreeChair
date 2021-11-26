@@ -13,7 +13,7 @@ class SearchResultActivity : AppCompatActivity() {
 
     val binding by lazy{ActivitySearchResultBinding.inflate(layoutInflater)}
     val helper=SqliteHelper(this,"restaurantDb",1)
-    val adapter=CustomAdapter()
+    val adapter=CustomAdapter(this)
     var restaurantInfo: MutableList<Restaurant> = mutableListOf()//query 리턴문 저장. 검색에 대한 결과. 체크박스 고려 전.
 
     var searchValue:String?=""
@@ -23,6 +23,8 @@ class SearchResultActivity : AppCompatActivity() {
     var elevatorCheck="N"
     var stairCheck="N"
     var restroomCheck="N"
+
+    var resultClick:Restaurant?=null
 
     //체크박스 리스너 코딩
     val checkListener by lazy {
@@ -131,6 +133,8 @@ class SearchResultActivity : AppCompatActivity() {
         binding.backButton.setOnClickListener{
             finish()
         }
+
+
         
         
 
