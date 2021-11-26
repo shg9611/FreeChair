@@ -1,11 +1,15 @@
 package com.example.freechair
 
 import android.content.Intent
+import android.location.Address
+import android.location.Geocoder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.KeyEvent.KEYCODE_ENTER
 import com.example.freechair.databinding.ActivityMainBinding
+import java.io.IOException
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -36,6 +40,7 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
+
 
     }
 }

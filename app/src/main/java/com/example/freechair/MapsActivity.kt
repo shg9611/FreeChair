@@ -13,11 +13,9 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
 import com.example.freechair.databinding.ActivityMapsBinding
 import com.google.android.gms.location.*
-import com.google.android.gms.maps.model.CameraPosition
+import com.google.android.gms.maps.model.*
 
 class MapsActivity : BaseActivity(), OnMapReadyCallback {
 
@@ -25,14 +23,25 @@ class MapsActivity : BaseActivity(), OnMapReadyCallback {
     private lateinit var binding: ActivityMapsBinding
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var locationCallback: LocationCallback
+    private var marker:Marker?=null
     private var permissionCheck=false
     private var currPosition=false
+    private val helper=SqliteHelper(this,"restaurantDb",1)
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        helper.dbInit()
+
+        binding.backButtonMap.setOnClickListener{
+            finish()
+        }
 
         val permissions = arrayOf(
             Manifest.permission.ACCESS_COARSE_LOCATION,
@@ -75,6 +84,17 @@ class MapsActivity : BaseActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
+        binding.plusButton.setOnClickListener{
+            mMap.animateCamera(CameraUpdateFactory.zoomIn())
+
+        }
+        binding.minusButton.setOnClickListener{
+            mMap.animateCamera(CameraUpdateFactory.zoomOut())
+
+        }
+
+
+
         if (permissionCheck==false){
             //좌표 객체 생성
             val LATLNGinit = LatLng(37.566418, 126.977943)
@@ -83,7 +103,8 @@ class MapsActivity : BaseActivity(), OnMapReadyCallback {
             val markerOptions = MarkerOptions()
                 .position(LATLNGinit)
                 .title("서울시청")
-                .snippet("정보차아아앙")
+                .snippet("현재위치")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
 
             //생성한 마커 객체 맵에 추가
             mMap.addMarker(markerOptions)
@@ -94,16 +115,35 @@ class MapsActivity : BaseActivity(), OnMapReadyCallback {
                 .zoom(15.0f)
                 .build()
 
+
+
             //생성한 카메라 위치 객체 전달하여 카메라 업데이트 객체 생성.
             val cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition)
 
             //카메라 이동
             mMap.moveCamera(cameraUpdate)
+
+        }
+
+        val listForCoordinate=helper.selectAll()
+        for (shop in listForCoordinate){
+            val shopCoordinate=LatLng(shop.latitude,shop.longitude)
+            val markerOptions = MarkerOptions()
+                .position(shopCoordinate)
+                .title("${shop.name}")
+                .snippet("${shop.phoneNo}")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
+
+            //생성한 마커 객체 맵에 추가
+            mMap.addMarker(markerOptions)
+
         }
 
         //현재 위치로 갱신
         fusedLocationClient=LocationServices.getFusedLocationProviderClient(this)
         updateLocation()
+
+
 
 
 
@@ -136,13 +176,15 @@ class MapsActivity : BaseActivity(), OnMapReadyCallback {
         val markerOptions = MarkerOptions()
             .position(LATLNG)
             .title("현재위치")
+            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
 
         val cameraPosition= CameraPosition.Builder()
             .target(LATLNG)
             .zoom(15.0f)
             .build()
-        mMap.clear()
-        mMap.addMarker(markerOptions)
+
+        marker?.remove()
+        marker=mMap.addMarker(markerOptions)
         if(currPosition){}
         else{mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))}
         currPosition=true

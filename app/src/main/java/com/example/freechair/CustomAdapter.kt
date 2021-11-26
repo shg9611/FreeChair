@@ -37,27 +37,35 @@ class Holder(val binding:ItemRecyclerBinding): RecyclerView.ViewHolder(binding.r
         // 가게 아이콘 표시부
         if (restaurant.elevator.equals("Y")){
             binding.elevator.setColorFilter(Color.parseColor("#006400"))
+            binding.elevator.alpha=1.0F
         }
         else{
             binding.elevator.setColorFilter(Color.parseColor("#B22222"))
+            binding.elevator.alpha=0.2F
         }
         if (restaurant.heightDiffer.equals("Y")){
             binding.stair.setColorFilter(Color.parseColor("#006400"))
+            binding.stair.alpha=1.0F
         }
         else{
             binding.stair.setColorFilter(Color.parseColor("#B22222"))
+            binding.stair.alpha=0.2F
         }
         if (restaurant.ramp.equals("Y")){
             binding.ramp.setColorFilter(Color.parseColor("#006400"))
+            binding.ramp.alpha=1.0F
         }
         else{
             binding.ramp.setColorFilter(Color.parseColor("#B22222"))
+            binding.ramp.alpha=0.2F
         }
         if (restaurant.restroom.equals("Y")){
             binding.restRoom.setColorFilter(Color.parseColor("#006400"))
+            binding.restRoom.alpha=1.0F
         }
         else{
             binding.restRoom.setColorFilter(Color.parseColor("#B22222"))
+            binding.restRoom.alpha=0.2F
         }
 
     }

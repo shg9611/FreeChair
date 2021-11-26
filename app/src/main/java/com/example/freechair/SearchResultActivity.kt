@@ -93,6 +93,8 @@ class SearchResultActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         helper.dbInit()
+        //유지 보수시에 아래 한줄 사용. 좌표 자동 계산.
+        //helper.initCoordinate(this)
 
         Log.d("result","초기 검색값 : ${intent.getStringExtra("search")}")
 
